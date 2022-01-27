@@ -1,22 +1,18 @@
 <?php
-use ToDo\Database;
-use ToDo\Task;
-use ToDo\Validation;
+use MB\Database;
+use MB\Task;
 
- $errors = [];
+var_dump($_POST);
 
-if(isset($_POST['save'])){
-    $errors = Validation::validator($_POST);
+    if(isset($_POST['save'])){
+        $connection = Database::connect();  //connect to db
+        $task = new Task($connection);      //create task object
+        $task->createTask($_POST);          //pass form data to Task objext
 
-    if(empty($errors)){
-        $connection = Database::connect(); // prisijungimas prie db
-        $task = new Task($connection);    // sukuria task objekta
-        $task->createTask($_POST);         //
     }
-//    else {
-//        var_dump($errors);
-//    }
 
-}
+
+
+
 
 require 'view/pages/add-task.view.php';
