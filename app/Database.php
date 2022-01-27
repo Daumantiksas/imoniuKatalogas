@@ -1,12 +1,12 @@
 <?php 
 namespace MB;
-use MB;
+use PDO;
 
 class Database {
-    private static $host = 'mysql:host=database';
-    private static $user = 'root';
-    private static $password = "tiger";
-    private static $database = 'todo';
+    private static $host = 'mysql:host=ddev-NaujasBandymas-db';
+    private static $user = 'db';
+    private static $password = "db";
+    private static $database = 'db';
     private static $options = [
         PDO::ATTR_ERRMODE=>PDO::ERRMODE_WARNING
     ];
