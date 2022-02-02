@@ -1,5 +1,5 @@
 <?php require 'view/_partials/head.view.php'; ?>
-
+<a class="btn btn-outline-success" href="/">Gristi</a>
     <form class="d-flex">            
     <table class="table">       
     <thead>

@@ -2,7 +2,7 @@
 use MB\Database;
 use MB\Task;
 
-// var_dump($_POST);
+//  var_dump($_POST);
 
     if(isset($_POST['save'])){
         $connection = Database::connect();  //connect to db

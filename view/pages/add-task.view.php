@@ -1,9 +1,13 @@
 <?php require 'view/_partials/head.view.php'; ?>
-
+<a class="btn btn-outline-success" href="/">Gristi</a>
 
 <div class="container" style="margin-top: 30px">
    
-
+    <!-- <?php foreach ($errors as $error): ?>
+        <div class="alert alert-danger" role="alert">
+            <?= $error; ?>
+        </div>
+    <?php endforeach; ?> -->
 
         <form method="post">
             <div class="form-group">
