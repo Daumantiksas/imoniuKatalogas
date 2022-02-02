@@ -3,7 +3,7 @@ namespace MB;
 use PDO;
 
 class Database {
-    private static $host = 'mysql:host=ddev-NaujasBandymas-db';
+    private static $host = 'mysql:host=ddev-imoniukatalogas-db';
     private static $user = 'db';
     private static $password = "db";
     private static $database = 'db';

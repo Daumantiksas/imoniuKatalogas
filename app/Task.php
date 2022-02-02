@@ -5,7 +5,7 @@ use PDOException;
 
 class Task{
     protected $pdo;
-    private $id;
+    private $code;
     private $name;
     private $pvm_code;
     private $adress;
@@ -20,7 +20,7 @@ class Task{
     
         
     public function createTask($task){
-        $this->id = $task['id'];
+        $this->code = $task['code'];
         $this->name = $task['name'];
         $this->pvm_code = $task['pvm_code'];
         $this->adress = $task['adress'];
@@ -33,10 +33,10 @@ class Task{
 
     private function insertTask(){
         try {
-            $query = "INSERT INTO `Imones` (`id`, `name`, `pvm_code`, `adress`, `phone`, `email`, `work`, `boss`) 
-            VALUES (:id, :name, :pvm_code, :adress, :phone, :email, :work, :boss)";
+            $query = "INSERT INTO `Imones` (`code`, `name`, `pvm_code`, `adress`, `phone`, `email`, `work`, `boss`) 
+            VALUES (:code, :name, :pvm_code, :adress, :phone, :email, :work, :boss)";
             $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':id', $this->id, PDO::PARAM_STR);
+            $stmt->bindParam(':code', $this->code, PDO::PARAM_STR);
             $stmt->bindParam(':name', $this->name, PDO::PARAM_STR);
             $stmt->bindParam(':pvm_code', $this->pvm_code, PDO::PARAM_STR);
             $stmt->bindParam(':adress', $this->adress, PDO::PARAM_STR);
@@ -56,26 +56,19 @@ class Task{
         return $statement->fetchAll(PDO::FETCH_ASSOC);  //grazina kaip asociatyvu masyva
     }
 
-//    public function deleteTask($id){
-//        $statement = $this->pdo->prepare("DELETE FROM `tasks` WHERE id=$id");
-//        $statement->execute();
-//        header('Location:/');
-//        return $statement;
-//    }
+   public function deleteTask($id){
+       $statement = $this->pdo->prepare("DELETE FROM `Imones` WHERE id=$id");
+       $statement->execute();
+       header('Location:/');
+       return $statement;
+   }
+   public function findTask($name){
+    $statement = $this->pdo->prepare("SELECT * FROM `Imones` WHERE name LIKE '%$name%'");
+    $statement->execute();
+    //header('Location:/');
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
 
-//    public function setComplete($id)
-//    {
-//        $this->status = 1;
-//        try {
-//            $query = "UPDATE tasks SET `status`=:status WHERE id=:id";
-//            $stmt = $this->pdo->prepare($query);
-//            $stmt->bindParam(':status', $this->status, PDO::PARAM_STR);
-//            $stmt->bindParam(':id', $id, PDO::PARAM_STR);
-//            $stmt->execute();
-//            header('Location:/');
-//        } catch (\PDOException $e) {
-//            echo $e->getMessage();
-//        }
-//    }
+
 }
 ?>
